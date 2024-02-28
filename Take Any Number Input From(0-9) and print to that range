@@ -1,0 +1,38 @@
+.model small
+.stack 100h
+.code
+.data  
+
+       MSG DB 13,10,"ENTER THE NUMBER FROM 0 TO 9$"
+    
+
+main proc 
+     MOV AX,@DATA
+     MOV DS, AX
+    
+     LEA DX,MSG
+     MOV AH, 9
+     INT 21H
+      
+     MOV AH,1
+     INT 21H 
+     
+     MOV CL,AL
+     SUB CL,48
+     MOV CH, 48
+     
+    
+     
+     
+   MY_LOOP:
+      
+     ADD CH,1
+     
+     MOV AH,2 
+     MOV DL,CH 
+     INT 21H
+          
+     LOOP MY_LOOP
+   
+main endp
+end main
