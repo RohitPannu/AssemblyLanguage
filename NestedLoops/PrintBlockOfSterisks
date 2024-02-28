@@ -1,0 +1,44 @@
+.MODEL SMALL
+.STACK 100H
+.DATA
+.CODE 
+
+    TEMP DW ?
+
+
+MAIN PROC
+     
+     MOV AX,@DATA
+     MOV DS,AX
+     
+     MOV CX,5
+      
+     OUTER:
+     
+     MOV TEMP, CX
+     MOV CX,10
+     
+     
+     MOV AH,2  
+     MOV DL,42
+     
+     
+     INNER: 
+     
+     INT 21H 
+    ; ADD DL,1 
+    
+     LOOP INNER 
+    
+     MOV CX, TEMP  
+     
+     MOV DL, 10
+     INT 21H
+     MOV DL,13
+     INT 21H
+  LOOP OUTER
+     
+     MOV AH, 4CH
+     INT 21H
+MAIN ENDP
+END
