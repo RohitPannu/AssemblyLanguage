@@ -1,0 +1,32 @@
+.MODEL SMALL
+.STACK 100H
+.DATA 
+
+    MSG DB 10,13,"THE ALPHABET IN SMALL LETTER FROM (a TO z) : $"
+.CODE
+
+MAIN PROC 
+    
+    MOV AX, @DATA
+    MOV DS, AX 
+    
+    
+    LEA DX,  MSG    
+    MOV AH,9H
+    INT 21H
+            
+   
+    MOV CX, 26
+    MOV AH,2
+    MOV DL,97
+    
+    ROHIT:   
+    INT 21H
+    ADD DL,1
+    
+    LOOP ROHIT:
+    
+    
+   
+MAIN ENDP
+END MAIN
