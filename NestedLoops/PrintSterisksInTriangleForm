@@ -1,0 +1,52 @@
+.MODEL SMALL
+.STACK 100H
+.DATA 
+    VAR DW ?
+    VAR1 DW ?
+.CODE 
+
+    
+
+MAIN PROC
+     
+     MOV AX,@DATA
+     MOV DS,AX
+     
+     
+     
+     MOV VAR1,1
+     MOV CX,5
+      
+     OUTER_LOOP:
+     
+     MOV VAR, CX
+     MOV CX, VAR1
+      
+     
+     
+        MOV AH,2  
+        MOV BL,42
+     
+     
+     INNER_LOOP: 
+        
+        MOV DL, BL 
+        INT 21H
+        ;INC BL 
+    
+     LOOP INNER_LOOP 
+        INC VAR1
+                 
+        MOV DL, 10
+        INT 21H
+        MOV DL,13
+        INT 21H 
+     
+     MOV CX,VAR
+     
+  LOOP OUTER_LOOP
+     
+     MOV AH, 4CH
+     INT 21H
+MAIN ENDP
+END
